@@ -21,9 +21,9 @@
 
 		<div>
 			<% if (errorMessage) { %>
-				<div class="user-message user-message--error"><%= errorMessage %></div>
+				<div style="margin-top: 2%;" class="user-message user-message--error"><%= errorMessage %></div>
 			<% } %>
-			<form class="login-form" action="/signup-student" method="POST" novalidate>
+			<form style="margin-top: 4%" class="login-form" action="/signup-student" method="POST" novalidate>
 				<div class="mb-3">
 					<label for="email">E-Mail</label>
 					<input 
@@ -32,7 +32,7 @@
 					name="email" 
 					id="email"
 					value="<%= oldInput.email %>"
-					style="background-color: rgb(223, 236, 231);>
+					style="background-color: rgb(223, 236, 231);">
 				</div>
 
 				<div class="mb-3">
@@ -43,25 +43,25 @@
 				<div class="mb-3">
 					<label for="regNo">Registration no.</label>
 					<input class="form-control <%= validationErrors.find(e => e.param === 'regNo') ? 'invalid' : '' %>"
-					type="number" name="regNo" id="regNo" value="<%= oldInput.regNo %>" style="background-color: rgb(223, 236, 231);>
+					type="number" name="regNo" id="regNo" value="<%= oldInput.regNo %>" style="background-color: rgb(223, 236, 231);">
 				</div>
 
 				<div class="mb-3">
 					<label for="password">Password</label>
 					<input class="form-control <%= validationErrors.find(e => e.param === 'password') ? 'invalid' : '' %>"
-					type="password" name="password" id="password" value="<%= oldInput.password %>" style="background-color: rgb(223, 236, 231);>
+					type="password" name="password" id="password" value="<%= oldInput.password %>" style="background-color: rgb(223, 236, 231);">
 				</div>
 				<div class="mb-3">
 					<label for="confirmPassword">Confirm Password</label>
 					<input class="form-control <%= validationErrors.find(e => e.param === 'confirmPassword') ? 'invalid' : '' %>"
-					type="password" name="confirmPassword" id="confirmPassword" value="<%= oldInput.confirmPassword %>" style="background-color: rgb(223, 236, 231);>
+					type="password" name="confirmPassword" id="confirmPassword" value="<%= oldInput.confirmPassword %>" style="background-color: rgb(223, 236, 231);">
 				</div>
 
 				<input type="hidden" name="_csrf" value="<%= csrfToken %>">
 				<button class="btn" type="submit">Signup as Student</button>
 
-				<div class="mb-3" >
-					<a href="/signup-teacher">Are you a Teacher ? Please SingUp here.</a> 
+				<div style="margin-top: 3%;" class="mb-3" >
+					<b>Are you a Teacher ? Please <a href="/signup-teacher"> Sign up here.</a> </b>
 				</div>
 			</form>
 		</div>

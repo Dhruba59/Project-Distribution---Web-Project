@@ -10,10 +10,10 @@
 	
 	
 	<main>
-		<section id="hero_in" class="teachers">
+		<section id="hero_in" class="courses">
 			<div class="wrapper">
 				<div class="container">
-					<h1 class="fadeInUp"><span></span>teachers offered by SUSTondemia</h1>
+					<h1 class="fadeInUp"><span></span>Teachers of SUSTondemia</h1>
 				</div>
 			</div>
 		</section>
@@ -156,10 +156,10 @@
 										<p> <%= teacher.designation%> </p>
 										<p> <%= teacher.phone %> </p>
 										<div class="rating"><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star"></i><i class="icon_star"></i> <small>(<%= Math.floor((Math.random() * 100) + 10);%>)</small></div>
+										<ul>
+											<li><a href="/teacher/<%=teacher.email%>">Show Details</a></li>
+										</ul>
 									</div>
-									<ul>
-										<li><a href="/teacher/<%=teacher.email%>">Show Details</a></li>
-									</ul>
 								</div>
 							</div>
 

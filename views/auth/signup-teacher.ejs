@@ -32,7 +32,7 @@
 					name="email" 
 					id="email"
 					value="<%= oldInput.email %>"
-					style="background-color: rgb(223, 236, 231);>
+					style="background-color: rgb(223, 236, 231);"">
 				</div>
 
 				<div class="mb-3">
@@ -43,25 +43,25 @@
 				<div class="mb-3">
 					<label for="regNo">Registration no.</label>
 					<input class="form-control <%= validationErrors.find(e => e.param === 'regNo') ? 'invalid' : '' %>"
-					type="number" name="regNo" id="regNo" value="<%= oldInput.regNo %>" style="background-color: rgb(223, 236, 231);>
+					type="number" name="regNo" id="regNo" value="<%= oldInput.regNo %>" style="background-color: rgb(223, 236, 231);">
 				</div>
 
 				<div class="mb-3">
 					<label for="password">Password</label>
 					<input class="form-control <%= validationErrors.find(e => e.param === 'password') ? 'invalid' : '' %>"
-					type="password" name="password" id="password" value="<%= oldInput.password %>" style="background-color: rgb(223, 236, 231);>
+					type="password" name="password" id="password" value="<%= oldInput.password %>" style="background-color: rgb(223, 236, 231);">
 				</div>
 				<div class="mb-3">
 					<label for="confirmPassword">Confirm Password</label>
 					<input class="form-control <%= validationErrors.find(e => e.param === 'confirmPassword') ? 'invalid' : '' %>"
-					type="password" name="confirmPassword" id="confirmPassword" value="<%= oldInput.confirmPassword %>" style="background-color: rgb(223, 236, 231);>
+					type="password" name="confirmPassword" id="confirmPassword" value="<%= oldInput.confirmPassword %>" style="background-color: rgb(223, 236, 231);">
 				</div>
 
 				<input type="hidden" name="_csrf" value="<%= csrfToken %>">
 				<button class="btn" type="submit">Signup as Teacher</button>
 
 				<div class="mb-3" >
-					<a href="/signup-student">Are you a Student ?  Please SingUp here.</a> 
+					<b>Are you a Student ?  Please <a href="/signup-student"> Sign up here.</a> </b>
 				</div>
 			</form>
 		</div>
