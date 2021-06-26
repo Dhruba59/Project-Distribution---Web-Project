@@ -13,7 +13,7 @@
 		<section id="hero_in" class="courses">
 			<div class="wrapper">
 				<div class="container">
-					<h1 class="fadeInUp"><span></span>Courses offered by SUSTondemia</h1>
+					<h1 class="fadeInUp"><span></span> Students of SUSTondemia</h1>
 				</div>
 			</div>
 		</section>
@@ -152,11 +152,10 @@
 										<small>Registration No : <%= student.regNo%> </small>
 										<h3>Name : <%= student.name%></h3>
 										<p>Email : <%= student.email %></p>
-										
+										<ul>
+											<li><a href="/student/<%=student.regNo%>">Show Details</a></li>
+										</ul>
 									</div>
-									<ul>
-										<li><a href="/student/<%=student.regNo%>">Show Details</a></li>
-									</ul>
 								</div>
 							</div>
 

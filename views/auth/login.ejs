@@ -21,11 +21,11 @@
 
         <div >
             <% if (errorMessage) { %>
-                <div class="user-message user-message--error"><%= errorMessage %></div>
+                <div style="margin-top: 2%; color:black;" class="user-message user-message--error"><%= errorMessage %></div>
             <% } %>
-            <form class="login-form" action="/login" method="POST" novalidate>
+            <form style="margin-top: 3%;" class="login-form" action="/login" method="POST" novalidate>
 
-                <div class="mb-3">
+                <div style="margin: 2%" class="mb-3">
                     <label for="email">E-Mail</label>
                     <input class="form-control <%= validationErrors.find(e => e.param === 'email') ? 'invalid' : '' %>"
                     type="email" name="email" id="email" value="<%= oldInput.email %>" placeholder="name@example.com"
@@ -33,14 +33,14 @@
                 </div>
 
 
-                <div class="mb-3">
+                <div style="margin: 2%;" class="mb-3">
                     <label for="password">Password</label>
                     <input class="form-control <%= validationErrors.find(e => e.param === 'password') ? 'invalid' : '' %>"
                     type="password" name="password" id="password" value="<%= oldInput.password %>"
                     style="background-color: rgb(223, 236, 231);">
                 </div>
 
-                <div>
+                <div style="display: flex; justify-content: space-between;">
                     <input type="radio" name="typeOfUser" id="student" value="student">Student 
                     <input type="radio" name="typeOfUser" id="teacher" value="teacher">Teacher
                     <input type="radio" name="typeOfUser" id="admin" value="admin">Admin

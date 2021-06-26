@@ -21,32 +21,30 @@
                         <a href="/student/mycourses" class="btn">See only my courses</a> 
                     <% } %>
                 </div>
-
+                
                 <% if (courses.length > 0) { %>
-                    <div class="grid">
+                        <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap; cursor: pointer; margin: 1%;"></div>
                         <% for (let course of courses) { %>
-                            <article class="card project-item">
   
-                                <div class="card__content">
-                                    <h1 class="project__name" style="background-color: rgb(217, 233, 228);">
-                                        <%= course.name %>
-                                    </h1>
-                                    <h2 class="project__email">
-                                        <%= course.courseCode %>
-                                    </h2>
-                                    <h3 class="project__email">
-                                        <%= course.teacherId %>
-                                    </h3>
-                                    <h3 class="project__email">
-                                        <%= course.year %>
-                                    </h3>
-                                    <p class="project__description">
-                                        <%= course.description %>
+                                <div style=" background-color: rgb(228, 228, 228); color: black; border-radius: 5px; text-align: center; margin: 3%; border: 3px;" class="card__content">
+                                    <h4 class="project__name" style="padding: .8%; background-color: rgb(204, 204, 204);">
+                                        <b>Course Name :</b> <%= course.name %>
+                                    </h4>
+                                    <h5>
+                                        <b>Course Code: </b><%= course.courseCode %>
+                                    </h5>
+                                    <h6>
+                                        <b>Teacher Id: </b><%= course.teacherId %>
+                                    </h6>
+                                    <h6>
+                                        <b>Time: </b><%= course.year %>
+                                    </h6>
+                                    <p>
+                                        <b>Description: </b><%= course.description %>
                                     </p>
                                 </div>
-                                
-                            </article>
-                            <% } %>
+
+                                <% } %>
                     </div>
                     <% } else { %>
                         <h1>No Courses Found!</h1>
