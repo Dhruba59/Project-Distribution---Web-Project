@@ -45,7 +45,7 @@ app.use(
     store: store
   })
 );
-app.use(csrfProtection);
+//app.use(csrfProtection);
 app.use(flash());
 
 // Check if the requester is authenticated or not

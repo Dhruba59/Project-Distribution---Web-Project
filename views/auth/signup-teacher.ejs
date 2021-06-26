@@ -23,7 +23,7 @@
 			<% if (errorMessage) { %>
 				<div class="user-message user-message--error"><%= errorMessage %></div>
 			<% } %>
-			<form class="login-form" action="/signup-student" method="POST" novalidate>
+			<form class="login-form" action="/signup-teacher" method="POST" novalidate>
 				<div class="mb-3">
 					<label for="email">E-Mail</label>
 					<input 
@@ -41,9 +41,14 @@
 					type="name" name="name" id="name" value="<%= oldInput.name %>" style="background-color: rgb(223, 236, 231);">
 				</div>
 				<div class="mb-3">
-					<label for="regNo">Registration no.</label>
-					<input class="form-control <%= validationErrors.find(e => e.param === 'regNo') ? 'invalid' : '' %>"
-					type="number" name="regNo" id="regNo" value="<%= oldInput.regNo %>" style="background-color: rgb(223, 236, 231);>
+					<label for="name">Description</label>
+					<input class="form-control <%= validationErrors.find(e => e.param === 'description') ? 'invalid' : '' %>"
+					type="description" name="description" id="description" value="<%= oldInput.description %>" style="background-color: rgb(223, 236, 231);">
+				</div>
+				<div class="mb-3">
+					<label for="name">designation</label>
+					<input class="form-control <%= validationErrors.find(e => e.param === 'designation') ? 'invalid' : '' %>"
+					type="designation" name="designation" id="designation" value="<%= oldInput.designation %>" style="background-color: rgb(223, 236, 231);">
 				</div>
 
 				<div class="mb-3">

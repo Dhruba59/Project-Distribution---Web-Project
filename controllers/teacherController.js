@@ -1,10 +1,15 @@
 const Teacher = require('../models/teacher');
 
 exports.getProfilePage = (req, res, next) => {
-  res.render('teacher/teacherProfile', {
-    path: '/teacher/teacherProfile',
-    pageTitle: 'Teacher Profile'
-  });
+  const teacherName = res.locals.currentUserName;
+  Teacher.findOne({name: teacherName})
+  .then((tea) => {
+    res.render('teacher/teacher-detail', {
+      path: '/teacher/teacherProfile',
+      pageTitle: 'Teacher Profile',
+      tea: tea
+    });
+  })
 };
 
 exports.getProfileByEmail = (req, res, next) => {
