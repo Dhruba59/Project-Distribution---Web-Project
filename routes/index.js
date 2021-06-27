@@ -22,6 +22,8 @@ router.get('/courses', indexController.showCourses);
 
 router.get('/course/:courseId', indexController.showCourseDetails);
 
+router.get('/project/:projectId', indexController.showProjectDetails);
+
 router.get('/about', indexController.getAbout);
 
 router.get('/faq', indexController.getFaq);

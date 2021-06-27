@@ -1,3 +1,4 @@
+const { Int32 } = require('mongodb');
 const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
@@ -15,12 +16,7 @@ const thesisSchema = new Schema({
     description: {
       type: String,
       required: true
-    },/*
-    supervisor: {
-        type: Schema.Types.ObjectId,
-        ref: 'Teacher',
-        required: true
-    },*/
+    },
     teachers: {
         requestedSupervisors: [
             {
@@ -32,6 +28,10 @@ const thesisSchema = new Schema({
                 isSupervisor: {
                     type: Boolean,
                     required: true
+                },
+                preferenceRank: {
+                  type: Number,
+                  requried: true
                 }
             }
         ]

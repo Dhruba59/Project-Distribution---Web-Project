@@ -2,17 +2,28 @@ const Project = require('../models/project');
 const Teacher = require('../models/teacher');
 const Course = require('../models/course');
 const Student = require('../models/student');
+const Thesis = require('../models/thesis');
 const mongoose = require('mongoose');
 
 exports.getProfilePage = (req, res, next) => {
   const studentName = res.locals.currentUserName;
-  Student.findOne({name: studentName})
-  .then((stu) => {
-    res.render('student/student-detail', {
-      path: '/student/studentProfile',
-      pageTitle: 'Student Profile',
-      student: stu
-    });
+
+  Course.find({'students.registeredStudents.studentId': req.user._id})
+  .then(myCourses => {
+
+    Student.findOne({name: studentName})
+    .then((stu) => {
+
+      res.render('student/student-detail', {
+        path: '/student/studentProfile',
+        pageTitle: 'Student Profile',
+        student: stu,
+        courses: myCourses,
+        isMine: true
+      });
+
+    })
+
   })
 };
 
@@ -68,7 +79,7 @@ exports.postAddProject = async (req, res, next) => {
 
   let studentId;
   try{
-    const s = await Student.findOne({regNo: studentreg});
+    const s = await Student.findOne({regNo: studentReg});
     studentId = studentId._id;
   }
   catch(e){
@@ -272,13 +283,67 @@ exports.getMyCourses = (req, res, next) => {
 // Everything about Student Thesis.
 
 exports.getApplyForThesis = (req, res, next) => {
-  res.render("student/thesisApply", {
-    pageTitle: "Apply for thesis",
-    path: "/student/apply-for-thesis"
-  });
+  Teacher.find().then(teachers => {
+    const teaLst = [];
+    teachers.forEach(t => {
+      teaLst.push(t.name);
+    });
+    teaLst.sort();
+
+    res.render("student/thesisApply", {
+      pageTitle: "Apply for thesis",
+      path: "/student/apply-for-thesis",
+      editing: false,
+      teacherList: teaLst
+    });
+  })
 }
 
-exports.postApplyForThesis = (req, res, next) => {
-  // Do some backEnd stuff here.
+exports.postApplyForThesis = async (req, res, next) => {
+  const thesisName = req.body.name;
+  const teacher_1 = req.body.teacher1;
+  console.log('tea 1 = ', teacher_1);
+  const teacher_2 = req.body.teacher2;
+  const teacher_3 = req.body.teacher3;
+  const teacher_4 = req.body.teacher4;
+  const teacher_5 = req.body.teacher5;
+
+  const partnerReg = req.body.studentReg;
+  const gitLink = req.body.githubLink;
+  const description = req.body.description;
+
+
+  const studentId = await Student.findOne({regNo: partnerReg});
+  const studentArray = [{studentId: mongoose.Types.ObjectId(studentId._id) }];
+  studentArray.push({studentId: req.user._id});
+
+  const teacherArray = [];
+
+  const t1Id = await Teacher.findOne({name: teacher_1});
+  teacherArray.push({teacherId: t1Id._id, isSupervisor: false, preferenceRank: 1});
+  const t2Id = await Teacher.findOne({name: teacher_2});
+  teacherArray.push({teacherId: t2Id._id, isSupervisor: false, preferenceRank: 2});
+  const t3Id = await Teacher.findOne({name: teacher_3});
+  teacherArray.push({teacherId: t3Id._id, isSupervisor: false, preferenceRank: 3});
+  const t4Id = await Teacher.findOne({name: teacher_4});
+  teacherArray.push({teacherId: t4Id._id, isSupervisor: false, preferenceRank: 4});
+  const t5Id = await Teacher.findOne({name: teacher_5});
+  teacherArray.push({teacherId: t5Id._id, isSupervisor: false, preferenceRank: 5});
+
+
+  const thesis = new Thesis({
+    name: thesisName,
+    students: {
+      involvedStudents: studentArray
+    },
+    teachers: {
+      requestedSupervisors: teacherArray
+    },
+    description: description,
+    githubLink: gitLink,
+    courseCode: mongoose.Types.ObjectId("608680b7e2993721a01cd7b5")
+  });
+  await thesis.save();
+
   res.redirect('/student/projects');
 }

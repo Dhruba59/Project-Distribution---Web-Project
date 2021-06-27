@@ -64,6 +64,20 @@
                 
             <% } %>
 
+            <% if (typeOfUser === 'teacher') { %>
+
+                <li><span><a href="#0">Thesis </a></span>
+                    <ul>
+                        <li><span><a class="<%= path === '/teacher/showThesisNotifications' ? 'active' : '' %>" href="/teacher/thesis_notifications">Thesis Requests</a></span></li>
+
+                        <li><span><a class="<%= path === '/teacher/thesis' ? 'active' : '' %>" href="/teacher/thesis">Thesis Details</a></span></li>
+                    </ul>
+                </li>
+
+                
+            <% } %>
+
+
             <input type="hidden" name="_csrf" value="<%= csrfToken %>">
 
 
@@ -75,7 +89,7 @@
 
                 <li><span>
                     <a class="<%= ((path === '/user') || (path === '/student/studentProfile') || (path === '/teacher/teacherProfile') || (path === '/admin/indexPage')) ? 'active' : '' %>" href="/user">
-                        <h5 style=" font-size: small; padding: 4%; border:1px; border-radius: 3px; background-color: rgb(61, 60, 60); color: rgb(228, 247, 255);"><%= currentUserName %></h5>
+                        <h5 style=" font-size: small; padding: 4%; border:1px; border-radius: 3px; color: rgb(228, 247, 255);"><%= currentUserName %></h5>
                     </a>
                 </span></li>
                 

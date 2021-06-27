@@ -1,6 +1,7 @@
 const Student = require('../models/student');
 const Teacher = require('../models/teacher');
 const Course = require('../models/course');
+const Project = require('../models/project');
 
 exports.indexing = (req, res, next) => {
   Teacher.find()
@@ -65,6 +66,19 @@ exports.showCourseDetails = (req,res, next)=>{
       pageTitle: "Course Details",
       path: "/courses",
       myCourse: course
+    })
+  })
+  .catch(err => {console.log(err);});
+}
+
+exports.showProjectDetails = (req,res, next)=>{
+  const projectId = req.params.projectId;
+  Project.find({_id: projectId})
+  .then(p => {
+    res.render('student/project-detail',{
+      pageTitle: "project Details",
+      path: "/projects",
+      myCourse: p
     })
   })
   .catch(err => {console.log(err);});

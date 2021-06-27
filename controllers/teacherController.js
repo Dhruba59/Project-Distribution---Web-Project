@@ -1,4 +1,6 @@
 const Teacher = require('../models/teacher');
+const Thesis = require('../models/thesis');
+const mongoose = require('mongoose');
 
 exports.getProfilePage = (req, res, next) => {
   const teacherName = res.locals.currentUserName;
@@ -24,4 +26,22 @@ exports.getProfileByEmail = (req, res, next) => {
   })
 
 };
-  
+
+exports.getThesisNotifications = (req, res, next) => {
+  Thesis.find({'teachers.requestedSupervisors.teacherId': req.user._id})
+  .then(noti => {
+    console.log('noti = ', noti);
+    res.render('teacher/show-thesis-notifications', {
+      path: '/teacher/showThesisNotifications',
+      pageTitle: 'Thesis requests',
+      notifications: noti
+    });
+  })
+}
+
+exports.getThesisPage = (req, res, next) => {
+  res.render('teacher/show-thesis', {
+    path: '/teacher/showThesis',
+    pageTitle: 'Thesis Details'
+  });
+}
