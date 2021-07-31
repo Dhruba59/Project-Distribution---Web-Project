@@ -14,4 +14,6 @@ router.get('/thesis', teacherController.getThesisPage);
 
 router.get('/:teacher_email', teacherController.getProfileByEmail);
 
+router.get('/add-team', teacherController.getAddTeam);
+
 module.exports = router;

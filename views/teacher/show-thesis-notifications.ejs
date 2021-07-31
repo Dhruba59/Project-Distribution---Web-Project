@@ -21,6 +21,7 @@
                    
 
                     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap; cursor: pointer; margin: 1%;">
+                        <% itemCounter = 0 %>
                         <% for (let noti of notifications) { %>
                         
                                 <div style=" background-color: rgb(228, 228, 228); color: black; border-radius: 5px; text-align: center; margin: 3%; border: 3px;" class="card__content">
@@ -34,21 +35,28 @@
                                         <b>Github Link</b> : <%= noti.githubLink %>
                                     </h4 style="margin: 2%;">
                                     <p style="margin: 2%;" >
-                                        <b>CourseCode</b> : <%= noti.courseCode %>
+                                        <b>CourseCode</b> : CSE480
                                     </p>
 
 
                                     <h4 style="margin: 2%;" >
-                                        <b>Student Ids</b> : 
+                                        <b>Student Names</b> : 
                                     </h4 style="margin: 2%;">
 
-                                    <% for (let stu of noti.students.involvedStudents) { %>
-                                        
-                                        <h4> <%= stu._id %> </h4>
-                                    <% } %>
+                                    <h4> <%=studentArray[itemCounter].student1 %> </h4>
+                                    <h4> <%=studentArray[itemCounter].student2 %> </h4>
+
+                                    
                                     <a href="/teacher/thesis" class="btn">More details</a> 
+
+                                    <% if(!noti.isTaken){ %>
+                                    <a href="/teacher/thesis" class="btn">Add this team to your choice list.</a> 
+                                    <% } else { %>
+                                        This team has been already choosen. Team number is in rank 02 of your choice list.
+                                    <% } %>
                                 </div>
                                 
+                                <% itemCounter = itemCounter + 1; %> 
                   
                             <% } %>
                     </div>

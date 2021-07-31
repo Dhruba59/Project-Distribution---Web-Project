@@ -15,10 +15,14 @@
                 </section>
 
                 <div style="margin-top: 3%; margin-bottom: 3%; width: 150mm;" class="container center">
+                    <% if (errorMessage) { %>
+                        <div style="margin-top: 2%; color:black;" class="user-message user-message--error"><%= errorMessage %></div>
+                    <% } %>
+
                     <form class="login-form" action="/student/<% if (editing) { %>apply-for-thesis<% } else { %>apply-for-thesis<% } %>" method="POST">
                         <div class="mb-3">
                             <label for="name">Thesis Idea name</label>
-                            <input class="form-control" type="text" name="name" id="name" value="<% if (editing) { %><%= project.name %><% } %>"
+                            <input class="form-control" type="text" name="name" id="name" value="<%= oldInput.name %>"
                             style="background-color: rgb(223, 236, 231);">
                         </div>
             
@@ -26,14 +30,14 @@
             
                         <div class="mb-3">
                             <label for="studentId">Partner's registration No</label>
-                            <input class="form-control" type="text" name="studentReg" id="studentReg" value="<% if (editing) { %><%= project.regNo %><% } %>"
+                            <input class="form-control" type="text" name="studentReg" id="studentReg" value="<%= oldInput.studentReg %>"
                             style="background-color: rgb(223, 236, 231);">
                         </div>
             
             
                         <div class="mb-3">
                             <label for="githubLink">GithubLink</label>
-                            <input class="form-control" type="text" name="githubLink" id="githubLink" value="<% if (editing) { %><%= project.githubLink %><% } %>"
+                            <input class="form-control" type="text" name="githubLink" id="githubLink" value="<%= oldInput.githubLink %>"
                             style="background-color: rgb(223, 236, 231);">
                         </div>
 
@@ -50,7 +54,7 @@
 
                         <div class="mb-3">
                             <label for="teacherId">Teacher 1 : </label>
-                            <select name="teacher2" id="teacher2">
+                            <select name="teacher1" id="teacher1">
                                 <% for (let sub of teacherList) { %>
                                     <option value="<%= sub%>" selected="selected" width=23> <%= sub %> </option>
                                 <% } %>
@@ -58,7 +62,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="teacherId">Teacher 2 : </label>
-                            <select name="teacher3" id="teacher3">
+                            <select name="teacher2" id="teacher2">
                                 <% for (let sub of teacherList) { %>
                                     <option value="<%= sub%>" selected="selected" width=23> <%= sub %> </option>
                                 <% } %>
@@ -66,7 +70,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="teacherId">Teacher 3 : </label>
-                            <select name="teacher4" id="teacher4">
+                            <select name="teacher3" id="teacher3">
                                 <% for (let sub of teacherList) { %>
                                     <option value="<%= sub%>" selected="selected" width=23> <%= sub %> </option>
                                 <% } %>
@@ -74,7 +78,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="teacherId">Teacher 4 : </label>
-                            <select name="teacher1" id="teacher1">
+                            <select name="teacher4" id="teacher4">
                                 <% for (let sub of teacherList) { %>
                                     <option value="<%= sub%>" selected="selected" width=23> <%= sub %> </option>
                                 <% } %>
@@ -104,7 +108,7 @@
                         <div class="mb-3">
                             <label for="description">Idea Description</label>
                             
-                            <input class="form-control" type="text" name="description" id="description" value="<% if (editing) { %><%= project.description %><% } %>"
+                            <input class="form-control" type="text" name="description" id="description"value="<%= oldInput.description %>"
                             style="background-color: rgb(223, 236, 231);">
                         </div>
                         <% if (editing) { %>

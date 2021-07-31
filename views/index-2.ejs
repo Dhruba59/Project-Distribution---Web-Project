@@ -87,6 +87,7 @@
 				</div>
 				-->
 
+				<% if(courses.length > 0) { %>
 				<% for(let course of courses){ %>
 
 					<div class="item">
@@ -113,6 +114,9 @@
 					</div>
 
 				<% } %> 
+				<% } else{ %>
+					<h2> No courses found ! </h2>
+				<% } %>
 				<!-- /item -->
 			</div>
 			<!-- /carousel -->
@@ -135,7 +139,7 @@
 					<% for (let teacher of teachers) { %>
 
 						<div class="col-lg-4 col-md-6 wow" data-wow-offset="150">
-							<a href="#0" class="grid_item">
+							<a href="/teacher/<%=teacher.email%>" class="grid_item">
 								<figure class="block-reveal">
 									<div class="block-horizzontal"></div>
 									<img src="http://via.placeholder.com/1000x500?text=+" class="img-fluid" alt="">
